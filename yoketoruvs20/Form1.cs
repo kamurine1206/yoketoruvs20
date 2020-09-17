@@ -48,6 +48,25 @@ namespace yoketoruvs20
         public Form1()
         {
             InitializeComponent();
+
+            for (int i = 0; i < ChrMax; i++)
+            {
+                chrs[i] = new Label();
+                chrs[i].AutoSize = true;
+                if(i == PlayerIndex)
+                {
+                    chrs[i].Text = PlayerText;
+                }
+                else if (i < ItmeIndex)
+                {
+                    chrs[i].Text = EnemyText;
+                }
+                else
+                {
+                    chrs[i].Text = ItmeText;
+                }
+                Controls.Add(chrs[i]);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
