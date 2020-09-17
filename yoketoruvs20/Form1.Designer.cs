@@ -37,6 +37,8 @@
             this.zanki = new System.Windows.Forms.Label();
             this.gameover = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.END = new System.Windows.Forms.Button();
+            this.clearlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // daimei
@@ -53,12 +55,13 @@
             // START
             // 
             this.START.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.START.Location = new System.Drawing.Point(265, 276);
+            this.START.Location = new System.Drawing.Point(276, 276);
             this.START.Name = "START";
             this.START.Size = new System.Drawing.Size(208, 84);
             this.START.TabIndex = 1;
             this.START.Text = "スタート";
             this.START.UseVisualStyleBackColor = true;
+            this.START.Click += new System.EventHandler(this.START_Click);
             // 
             // name
             // 
@@ -104,7 +107,7 @@
             // 
             this.gameover.AutoSize = true;
             this.gameover.Font = new System.Drawing.Font("MS UI Gothic", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.gameover.Location = new System.Drawing.Point(245, 26);
+            this.gameover.Location = new System.Drawing.Point(258, 138);
             this.gameover.Name = "gameover";
             this.gameover.Size = new System.Drawing.Size(252, 54);
             this.gameover.TabIndex = 6;
@@ -112,13 +115,37 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // END
+            // 
+            this.END.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.END.Location = new System.Drawing.Point(276, 276);
+            this.END.Name = "END";
+            this.END.Size = new System.Drawing.Size(208, 84);
+            this.END.TabIndex = 7;
+            this.END.Text = "タイトルへ";
+            this.END.UseVisualStyleBackColor = true;
+            this.END.Click += new System.EventHandler(this.END_Click);
+            // 
+            // clearlabel
+            // 
+            this.clearlabel.AutoSize = true;
+            this.clearlabel.Font = new System.Drawing.Font("HG行書体", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.clearlabel.Location = new System.Drawing.Point(207, 138);
+            this.clearlabel.Name = "clearlabel";
+            this.clearlabel.Size = new System.Drawing.Size(369, 67);
+            this.clearlabel.TabIndex = 8;
+            this.clearlabel.Text = "ＣＬＥＡＲ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.clearlabel);
+            this.Controls.Add(this.END);
             this.Controls.Add(this.gameover);
             this.Controls.Add(this.zanki);
             this.Controls.Add(this.Highscore);
@@ -144,6 +171,8 @@
         private System.Windows.Forms.Label zanki;
         private System.Windows.Forms.Label gameover;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button END;
+        private System.Windows.Forms.Label clearlabel;
     }
 }
 

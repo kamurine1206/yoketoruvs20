@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace yoketoruvs20
 {
     public partial class Form1 : Form
     {
+        const bool isDebug = true;
+
+        
         enum State
         {
             None = -1,        //無効
@@ -22,6 +26,11 @@ namespace yoketoruvs20
         }
         State currentState = State.None;
         State nextState = State.Title;
+
+        [DllImport("user32.dll")]
+
+        public static extern short GetAsyncKeyState(int vKey);
+
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +47,18 @@ namespace yoketoruvs20
             {
                 initProc();
             }
+
+            if(isDebug)
+            {
+                if(GetAsyncKeyState((int)Keys.O) < 0)
+                {
+                    nextState = State.Gameover;
+                }
+                else if (GetAsyncKeyState((int)Keys.C) < 0)
+                {
+                    nextState = State.Clear;
+                }
+            }
         }
 
         void initProc()
@@ -47,16 +68,47 @@ namespace yoketoruvs20
 
             switch (currentState)
             {
-                case State.Title;
+                case State.Title:
                     daimei.Visible = true;
                     START.Visible = true;
-                    gameover.Visible = true;
+                    gameover.Visible = false;
                     Highscore.Visible = true;
                     Time.Visible = true;
                     zanki.Visible = true;
                     name.Visible = true;
+                    END.Visible = false;
+                    clearlabel.Visible = false;
+                    break;
+
+                case State.Game:
+                    daimei.Visible = false;
+                    START.Visible = false;
+                    name.Visible = false;
+                    Highscore.Visible = false;
+                    clearlabel.Visible = false;
+                    break;
+
+                case State.Gameover:
+                    gameover.Visible = true;
+                    END.Visible = true;
+                    break;
+
+                case State.Clear:
+                    clearlabel.Visible = true;
+                    END.Visible = true;
+                    Highscore.Visible = true;
                     break;
             }
+        }
+
+        private void START_Click(object sender, EventArgs e)
+        {
+            nextState = State.Game;
+        }
+
+        private void END_Click(object sender, EventArgs e)
+        {
+            nextState = State.Title;
         }
     }
 }
