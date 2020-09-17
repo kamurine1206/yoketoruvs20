@@ -15,6 +15,20 @@ namespace yoketoruvs20
     {
         const bool isDebug = true;
 
+        const int PlayerMax = 1;
+        const int EnemyMax = 10;
+        const int ItemMax = 10;
+        const int ChrMax = PlayerMax + EnemyMax + ItemMax;
+        Label[] chrs = new Label[ChrMax];
+        const int PlayerIndex = 0;
+        const int EnemyIndex = PlayerIndex + PlayerIndex;　//プログラム計算式
+        const int ItmeIndex = EnemyIndex + EnemyIndex;　//プログラム計算式
+
+        const string PlayerText = "(*^-^*)";
+        const string EnemyText = "■";
+        const string ItmeText = "★";
+
+        static Random rand = new Random();
         
         enum State
         {
