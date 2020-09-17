@@ -131,14 +131,14 @@ namespace yoketoruvs20
                     name.Visible = false;
                     Highscore.Visible = false;
                     clearlabel.Visible = false;
-
-                    for (int i = EnemyIndex; i < ChrMax; i++)
+                    break;
+                    /*for (int i = EnemyIndex; i < ChrMax; i++)
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                     }
-                    break;
-
+                    break;*/
+                    
                 case State.Gameover:
                     gameover.Visible = true;
                     END.Visible = true;
