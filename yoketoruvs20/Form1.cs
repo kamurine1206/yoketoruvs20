@@ -54,7 +54,7 @@ namespace yoketoruvs20
         {
             InitializeComponent();
             
-            for (int i = 0; i < ChrMax; i++)
+            for (int i = 0; i < ChrMax; i++)//見分け方
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
@@ -70,6 +70,7 @@ namespace yoketoruvs20
                 {
                     chrs[i].Text = ItmeText;
                 }
+                chrs[i].Font = tenplabel.Font;
                 Controls.Add(chrs[i]);
             }
         }
@@ -102,16 +103,21 @@ namespace yoketoruvs20
             {
                 UpdateGame();
             }
+
+
         }
 
         void UpdateGame()
         {
             Point mp = PointToClient(MousePosition);
-            mp = PointToClient(mp);
             chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2;
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
+            chrs[PlayerIndex].Text = PlayerText;
+            
 
-            for(int i= EnemyIndex; i < ChrMax; i++)
+
+
+            for (int i= EnemyIndex; i < ChrMax; i++)
             {
                 chrs[i].Left += vx[i];
                 chrs[i].Top += vy[i];
@@ -119,27 +125,47 @@ namespace yoketoruvs20
                 if (chrs[EnemyIndex].Left < 0)
                 {
                     vx[i] = Math.Abs(vx[i]);
-                    chrs[i].Text = "☆";
+                    chrs[i].Text = "■";
 
                 }
                 if (chrs[i].Top < 0)
                 {
                     vy[i] = Math.Abs(vy[i]);
-                    chrs[i].Text = "☆";
+                    chrs[i].Text = "■";
 
                 }
                 if (chrs[i].Right >= ClientSize.Width)
                 {
                     vx[i] = -Math.Abs(vx[i]);
-                    chrs[i].Text = "☆";
+                    chrs[i].Text = "■";
 
                 }
                 if (chrs[i].Bottom >= ClientSize.Height)
                 {
                     vy[i] = -Math.Abs(vy[i]);
-                    chrs[i].Text = "☆";
+                    chrs[i].Text = "■";
                 }
+             
+                if(       (mp.X >= chrs[i].Left)
+                &&    (mp.X < chrs[i].Right)
+                &&    (mp.Y >= chrs[i].Top)
+                &&    (mp.Y < chrs[i].Bottom)
+                )
+                 
 
+            {
+                //MessageBox.Show("あたったね");
+                //敵か？
+                if(i<ItmeIndex)
+                {
+                        nextState = State.Title;
+                }
+                else
+                {
+                        chrs[i].Visible = false;
+                }
+            }
+                
             }
             //TODO; mpがプレイヤーの中心になるように設定
         }
@@ -161,6 +187,7 @@ namespace yoketoruvs20
                     name.Visible = true;
                     END.Visible = false;
                     clearlabel.Visible = false;
+                    tenplabel.Visible = false;
                     break;
 
                 case State.Game:
