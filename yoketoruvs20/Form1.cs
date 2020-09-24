@@ -26,7 +26,8 @@ namespace yoketoruvs20
 
         const string PlayerText = "(*^-^*)";
         const string EnemyText = "■";
-        const string ItmeText = "★";
+        const string ItmeText = "☆";
+
 
         static Random rand = new Random();
         
@@ -52,7 +53,7 @@ namespace yoketoruvs20
         public Form1()
         {
             InitializeComponent();
-
+            
             for (int i = 0; i < ChrMax; i++)
             {
                 chrs[i] = new Label();
@@ -80,7 +81,7 @@ namespace yoketoruvs20
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(nextState != State.None)
+            if (nextState != State.None)
             {
                 initProc();
             }
@@ -106,7 +107,40 @@ namespace yoketoruvs20
         void UpdateGame()
         {
             Point mp = PointToClient(MousePosition);
+            mp = PointToClient(mp);
+            chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2;
+            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
 
+            for(int i= EnemyIndex; i < ChrMax; i++)
+            {
+                chrs[i].Left += vx[i];
+                chrs[i].Top += vy[i];
+
+                if (chrs[EnemyIndex].Left < 0)
+                {
+                    vx[i] = Math.Abs(vx[i]);
+                    chrs[i].Text = "☆";
+
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy[i] = Math.Abs(vy[i]);
+                    chrs[i].Text = "☆";
+
+                }
+                if (chrs[i].Right >= ClientSize.Width)
+                {
+                    vx[i] = -Math.Abs(vx[i]);
+                    chrs[i].Text = "☆";
+
+                }
+                if (chrs[i].Bottom >= ClientSize.Height)
+                {
+                    vy[i] = -Math.Abs(vy[i]);
+                    chrs[i].Text = "☆";
+                }
+
+            }
             //TODO; mpがプレイヤーの中心になるように設定
         }
 
@@ -140,6 +174,8 @@ namespace yoketoruvs20
                     {
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                        vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                     }
                     break;
                     
@@ -164,6 +200,11 @@ namespace yoketoruvs20
         private void END_Click(object sender, EventArgs e)
         {
             nextState = State.Title;
+        }
+
+        private void gameover_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

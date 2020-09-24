@@ -39,6 +39,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.END = new System.Windows.Forms.Button();
             this.clearlabel = new System.Windows.Forms.Label();
+            this.tenplabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // daimei
@@ -46,7 +47,7 @@
             this.daimei.AutoSize = true;
             this.daimei.Font = new System.Drawing.Font("HG行書体", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.daimei.ForeColor = System.Drawing.Color.DarkBlue;
-            this.daimei.Location = new System.Drawing.Point(105, 111);
+            this.daimei.Location = new System.Drawing.Point(105, 119);
             this.daimei.Name = "daimei";
             this.daimei.Size = new System.Drawing.Size(573, 67);
             this.daimei.TabIndex = 0;
@@ -77,7 +78,7 @@
             // 
             this.Time.AutoSize = true;
             this.Time.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Time.Location = new System.Drawing.Point(34, 26);
+            this.Time.Location = new System.Drawing.Point(30, 26);
             this.Time.Name = "Time";
             this.Time.Size = new System.Drawing.Size(119, 27);
             this.Time.TabIndex = 3;
@@ -97,7 +98,7 @@
             // 
             this.zanki.AutoSize = true;
             this.zanki.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.zanki.Location = new System.Drawing.Point(640, 26);
+            this.zanki.Location = new System.Drawing.Point(637, 26);
             this.zanki.Name = "zanki";
             this.zanki.Size = new System.Drawing.Size(134, 27);
             this.zanki.TabIndex = 5;
@@ -107,11 +108,12 @@
             // 
             this.gameover.AutoSize = true;
             this.gameover.Font = new System.Drawing.Font("MS UI Gothic", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.gameover.Location = new System.Drawing.Point(258, 138);
+            this.gameover.Location = new System.Drawing.Point(267, 94);
             this.gameover.Name = "gameover";
             this.gameover.Size = new System.Drawing.Size(252, 54);
             this.gameover.TabIndex = 6;
             this.gameover.Text = "Gameover";
+            this.gameover.Click += new System.EventHandler(this.gameover_Click);
             // 
             // timer1
             // 
@@ -133,17 +135,28 @@
             // 
             this.clearlabel.AutoSize = true;
             this.clearlabel.Font = new System.Drawing.Font("HG行書体", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.clearlabel.Location = new System.Drawing.Point(207, 138);
+            this.clearlabel.Location = new System.Drawing.Point(209, 149);
             this.clearlabel.Name = "clearlabel";
             this.clearlabel.Size = new System.Drawing.Size(369, 67);
             this.clearlabel.TabIndex = 8;
             this.clearlabel.Text = "ＣＬＥＡＲ";
+            // 
+            // tenplabel
+            // 
+            this.tenplabel.AutoSize = true;
+            this.tenplabel.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tenplabel.Location = new System.Drawing.Point(46, 128);
+            this.tenplabel.Name = "tenplabel";
+            this.tenplabel.Size = new System.Drawing.Size(29, 20);
+            this.tenplabel.TabIndex = 9;
+            this.tenplabel.Text = "★";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tenplabel);
             this.Controls.Add(this.clearlabel);
             this.Controls.Add(this.END);
             this.Controls.Add(this.gameover);
@@ -173,6 +186,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button END;
         private System.Windows.Forms.Label clearlabel;
+        private System.Windows.Forms.Label tenplabel;
     }
 }
 
