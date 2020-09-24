@@ -13,6 +13,7 @@ namespace yoketoruvs20
 {
     public partial class Form1 : Form
     {
+        int ItemCount;
         const bool isDebug = true;
 
         const int PlayerMax = 1;
@@ -122,28 +123,24 @@ namespace yoketoruvs20
                 chrs[i].Left += vx[i];
                 chrs[i].Top += vy[i];
 
-                if (chrs[EnemyIndex].Left < 0)
+                if (chrs[i].Left < 0)
                 {
                     vx[i] = Math.Abs(vx[i]);
-                    chrs[i].Text = "■";
 
                 }
                 if (chrs[i].Top < 0)
                 {
                     vy[i] = Math.Abs(vy[i]);
-                    chrs[i].Text = "■";
 
                 }
                 if (chrs[i].Right >= ClientSize.Width)
                 {
                     vx[i] = -Math.Abs(vx[i]);
-                    chrs[i].Text = "■";
 
                 }
                 if (chrs[i].Bottom >= ClientSize.Height)
                 {
                     vy[i] = -Math.Abs(vy[i]);
-                    chrs[i].Text = "■";
                 }
              
                 if(       (mp.X >= chrs[i].Left)
@@ -158,14 +155,23 @@ namespace yoketoruvs20
                 //敵か？
                 if(i<ItmeIndex)
                 {
-                        nextState = State.Title;
+                        nextState = State.Gameover;
                 }
                 else
                 {
+                        //アイテム
                         chrs[i].Visible = false;
+                        ItemCount = 10;
+                        ItemCount = ItemCount - 1;
+                        if(ItemCount < 0)
+                        {
+                            nextState = State.Clear;
+                        }
                 }
             }
                 
+                    
+
             }
             //TODO; mpがプレイヤーの中心になるように設定
         }
@@ -188,6 +194,7 @@ namespace yoketoruvs20
                     END.Visible = false;
                     clearlabel.Visible = false;
                     tenplabel.Visible = false;
+                    ItemCount = 10;
                     break;
 
                 case State.Game:

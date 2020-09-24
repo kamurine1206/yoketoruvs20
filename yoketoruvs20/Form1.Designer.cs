@@ -100,9 +100,9 @@
             this.zanki.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.zanki.Location = new System.Drawing.Point(637, 26);
             this.zanki.Name = "zanki";
-            this.zanki.Size = new System.Drawing.Size(134, 27);
+            this.zanki.Size = new System.Drawing.Size(80, 27);
             this.zanki.TabIndex = 5;
-            this.zanki.Text = "残機☆:１０";
+            this.zanki.Text = "☆:１０";
             // 
             // gameover
             // 
