@@ -40,6 +40,7 @@
             this.END = new System.Windows.Forms.Button();
             this.clearlabel = new System.Windows.Forms.Label();
             this.tenplabel = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // daimei
@@ -144,12 +145,13 @@
             // tenplabel
             // 
             this.tenplabel.AutoSize = true;
-            this.tenplabel.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tenplabel.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tenplabel.Location = new System.Drawing.Point(46, 128);
             this.tenplabel.Name = "tenplabel";
-            this.tenplabel.Size = new System.Drawing.Size(29, 20);
+            this.tenplabel.Size = new System.Drawing.Size(47, 33);
             this.tenplabel.TabIndex = 9;
             this.tenplabel.Text = "★";
+            this.tenplabel.Visible = false;
             // 
             // Form1
             // 
@@ -187,6 +189,7 @@
         private System.Windows.Forms.Button END;
         private System.Windows.Forms.Label clearlabel;
         private System.Windows.Forms.Label tenplabel;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

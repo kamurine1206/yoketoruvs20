@@ -14,6 +14,7 @@ namespace yoketoruvs20
     public partial class Form1 : Form
     {
         int ItemCount;
+        int time;
         const bool isDebug = true;
 
         const int PlayerMax = 1;
@@ -22,12 +23,12 @@ namespace yoketoruvs20
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
         Label[] chrs = new Label[ChrMax];
         const int PlayerIndex = 0;
-        const int EnemyIndex = PlayerIndex + PlayerIndex;　//プログラム計算式
-        const int ItmeIndex = EnemyIndex + EnemyIndex;　//プログラム計算式
+        const int EnemyIndex = PlayerIndex + PlayerMax;　//プログラム計算式
+        const int ItemIndex = EnemyIndex + EnemyMax;　//プログラム計算式
 
         const string PlayerText = "(*^-^*)";
         const string EnemyText = "■";
-        const string ItmeText = "☆";
+        const string ItemText = "☆";
 
 
         static Random rand = new Random();
@@ -63,13 +64,13 @@ namespace yoketoruvs20
                 {
                     chrs[i].Text = PlayerText;
                 }
-                else if (i < ItmeIndex)
+                else if (i < ItemIndex)
                 {
                     chrs[i].Text = EnemyText;
                 }
                 else
                 {
-                    chrs[i].Text = ItmeText;
+                    chrs[i].Text = ItemText;
                 }
                 chrs[i].Font = tenplabel.Font;
                 Controls.Add(chrs[i]);
@@ -114,7 +115,19 @@ namespace yoketoruvs20
             chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2;
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
             chrs[PlayerIndex].Text = PlayerText;
-            
+
+            zanki.Text = "☆" + ItemCount;
+
+            if (time > 0)
+            {
+                time = time - 1;
+                Time.Text = time.ToString();
+            }
+            if(time <= 0)
+            {
+                nextState = State.Gameover;
+
+            }
 
 
 
@@ -153,7 +166,7 @@ namespace yoketoruvs20
             {
                 //MessageBox.Show("あたったね");
                 //敵か？
-                if(i<ItmeIndex)
+                if(i<ItemIndex)
                 {
                         nextState = State.Gameover;
                 }
@@ -161,7 +174,6 @@ namespace yoketoruvs20
                 {
                         //アイテム
                         chrs[i].Visible = false;
-                        ItemCount = 10;
                         ItemCount = ItemCount - 1;
                         if(ItemCount < 0)
                         {
@@ -203,6 +215,8 @@ namespace yoketoruvs20
                     name.Visible = false;
                     Highscore.Visible = false;
                     clearlabel.Visible = false;
+
+                    time = 100;
                     
                     for (int i = EnemyIndex; i < ChrMax; i++)
                     {
@@ -240,5 +254,6 @@ namespace yoketoruvs20
         {
 
         }
+
     }
 }
