@@ -41,6 +41,7 @@
             this.clearlabel = new System.Windows.Forms.Label();
             this.tenplabel = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.scorelabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // daimei
@@ -153,11 +154,22 @@
             this.tenplabel.Text = "★";
             this.tenplabel.Visible = false;
             // 
+            // scorelabel
+            // 
+            this.scorelabel.AutoSize = true;
+            this.scorelabel.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.scorelabel.Location = new System.Drawing.Point(231, 21);
+            this.scorelabel.Name = "scorelabel";
+            this.scorelabel.Size = new System.Drawing.Size(136, 33);
+            this.scorelabel.TabIndex = 10;
+            this.scorelabel.Text = "ハイスコア";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.scorelabel);
             this.Controls.Add(this.tenplabel);
             this.Controls.Add(this.clearlabel);
             this.Controls.Add(this.END);
@@ -190,6 +202,7 @@
         private System.Windows.Forms.Label clearlabel;
         private System.Windows.Forms.Label tenplabel;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label scorelabel;
     }
 }
 

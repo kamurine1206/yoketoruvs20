@@ -15,6 +15,8 @@ namespace yoketoruvs20
     {
         int ItemCount;
         int time;
+        int highscore;
+        int score = 0;
         const bool isDebug = true;
 
         const int PlayerMax = 1;
@@ -207,6 +209,7 @@ namespace yoketoruvs20
                     clearlabel.Visible = false;
                     tenplabel.Visible = false;
                     ItemCount = 10;
+                    scorelabel.Visible = true;
                     break;
 
                 case State.Game:
@@ -215,7 +218,7 @@ namespace yoketoruvs20
                     name.Visible = false;
                     Highscore.Visible = false;
                     clearlabel.Visible = false;
-
+                    scorelabel.Visible = false;
                     time = 100;
                     
                     for (int i = EnemyIndex; i < ChrMax; i++)
@@ -236,6 +239,13 @@ namespace yoketoruvs20
                     clearlabel.Visible = true;
                     END.Visible = true;
                     Highscore.Visible = true;
+                    scorelabel.Visible = true;
+                    scorelabel.Text = "score" + scorelabel;
+                    if(highscore > score)
+                    {
+                        scorelabel = Highscore;
+                    }
+
                     break;
             }
         }
