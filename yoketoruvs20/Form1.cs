@@ -122,8 +122,9 @@ namespace yoketoruvs20
 
             if (time > 0)
             {
-                time = time - 1;
                 Time.Text = time.ToString();
+                                time = time - 1;
+
             }
             if(time <= 0)
             {
@@ -177,10 +178,13 @@ namespace yoketoruvs20
                         //アイテム
                         chrs[i].Visible = false;
                         ItemCount = ItemCount - 1;
-                        if(ItemCount < 0)
+                        if(ItemCount <= 0)
                         {
                             nextState = State.Clear;
                         }
+                        vx[i] = 0;
+                        vy[i] = 0;
+                        chrs[i].Left = 10000;
                 }
             }
                 
@@ -227,6 +231,7 @@ namespace yoketoruvs20
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        chrs[i].Visible = true;
                     }
                     break;
                     
@@ -241,9 +246,10 @@ namespace yoketoruvs20
                     Highscore.Visible = true;
                     scorelabel.Visible = true;
                     scorelabel.Text = "score" + scorelabel;
-                    if(highscore > score)
+                    if(time < score)
                     {
                         scorelabel = Highscore;
+
                     }
 
                     break;
